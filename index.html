@@ -1,75 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Facebook Violation Submission</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Violation Report – Facebook Style</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      max-width: 600px;
-      margin: auto;
+      font-family: 'Inter', sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
     }
-    h1 {
-      color: #4267B2;
+    .container {
+      background: #ffffff;
+      padding: 30px;
+      max-width: 700px;
+      width: 90%;
+      margin: 40px auto;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     }
-    label {
-      display: block;
-      margin: 15px 0 5px;
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
     }
-    input, select, textarea, button {
-      width: 100%;
-      padding: 8px;
-      margin-bottom: 15px;
+    .header img {
+      height: 40px;
+    }
+    .header h1 {
+      color: #1877f2;
+      font-size: 26px;
+      margin: 0;
+    }
+    .caption {
+      background: #eef3fc;
+      padding: 15px 20px;
+      border-left: 4px solid #1877f2;
+      border-radius: 8px;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: flex-start;
+    }
+    .caption::before {
+      content: "⚠️";
+      margin-right: 10px;
+      font-size: 20px;
     }
     iframe {
       width: 100%;
-      height: 315px;
-      margin-bottom: 20px;
+      height: 300px;
+      border: none;
+      border-radius: 12px;
+      margin-bottom: 25px;
     }
-    .caption {
-      background-color: #f0f2f5;
-      padding: 15px;
-      border-left: 4px solid #4267B2;
+    label {
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: block;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
       margin-bottom: 20px;
+      border: 1px solid #dcdcdc;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.2s ease;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: #1877f2;
+      outline: none;
+    }
+    button {
+      background-color: #1877f2;
+      color: white;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.2s ease;
+    }
+    button:hover {
+      background-color: #165ecb;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+      iframe {
+        height: 200px;
+      }
+      .header h1 {
+        font-size: 22px;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <!-- Logo + Heading -->
+    <div class="header">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo" />
+      <h1>Report a Facebook Violation</h1>
+    </div>
 
-  <h1>Facebook Violation Report Form</h1>
+    <!-- Caption Box -->
+    <div class="caption">
+      This content may go against Facebook’s Community Standards (e.g., hate speech, violence, false information, or copyright violation). Please submit your report below.
+    </div>
 
-  <!-- Caption explaining community standards violation -->
-  <div class="caption">
-    <strong>Why this page may violate our Community Standards:</strong>
-    <p>This page or post might contain content that goes against Facebook's policies, such as hate speech, harassment, copyright infringement, or sharing false information. Please fill out the form below to help us review the issue.</p>
+    <!-- Embedded YouTube Video -->
+    <iframe src="https://www.youtube.com/embed/DQ1sJToXbB0" title=" Detailed video information" allowfullscreen></iframe>
+
+    <!-- Form Starts -->
+    <form method="post" action="/submit-violation">
+      <label for="url">URL of Offending Page or Post</label>
+      <input type="url" name="report_target_url" id="url" required placeholder="https://facebook.com/example-post" />
+
+      <label for="violation">Type of Violation</label>
+      <select name="violation_category" id="violation" required>
+        <option value="">Select a category</option>
+        <option value="copyright">Copyright Infringement</option>
+        <option value="harassment">Harassment or Bullying</option>
+        <option value="hate_speech">Hate Speech</option>
+        <option value="nudity">Nudity or Sexual Content</option>
+        <option value="false_info">False Information</option>
+      </select>
+
+      <label for="description">Description of Violation</label>
+      <textarea name="description" id="description" rows="4" placeholder="Explain why this content violates standards..." required></textarea>
+
+      <label for="evidence">Attach Screenshots or Files (optional)</label>
+      <input type="file" name="evidence[]" id="evidence" multiple accept="image/*,application/pdf" />
+
+      <button type="submit">Submit Violation Report</button>
+    </form>
   </div>
-
-  <!-- Video tutorial embedded above form -->
-  <iframe src="https://www.youtube.com/embed/VIDEO_ID_HERE" title="How to Report Facebook Violations" frameborder="0" allowfullscreen></iframe>
-
-  <form method="post" action="/submit-violation">
-    <label for="url">URL of Offending Page/Post:</label>
-    <input type="url" name="report_target_url" id="url" required />
-
-    <label for="violation">Category of Violation:</label>
-    <select name="violation_category" id="violation" required>
-      <option value="">-- Select --</option>
-      <option value="copyright">Copyright Infringement</option>
-      <option value="harassment">Harassment or Bullying</option>
-      <option value="hate_speech">Hate Speech</option>
-      <option value="false_info">False Information / Misinformation</option>
-      <option value="nudity">Sexual or Violent Content</option>
-    </select>
-
-    <label for="description">Description:</label>
-    <textarea name="description" id="description" rows="4" placeholder="Add any details that explain the violation..." required></textarea>
-
-    <label for="evidence">Attach Evidence (optional):</label>
-    <input type="file" name="evidence[]" id="evidence" multiple accept="image/*,application/pdf" />
-
-    <button type="submit">Submit Report</button>
-  </form>
-
 </body>
-</html>
+  </html>
