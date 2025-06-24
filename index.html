@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Facebook Violation Submission</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      color: #4267B2;
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+    input, select, textarea, button {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+    }
+    iframe {
+      width: 100%;
+      height: 315px;
+      margin-bottom: 20px;
+    }
+    .caption {
+      background-color: #f0f2f5;
+      padding: 15px;
+      border-left: 4px solid #4267B2;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Facebook Violation Report Form</h1>
+
+  <!-- Caption explaining community standards violation -->
+  <div class="caption">
+    <strong>Why this page may violate our Community Standards:</strong>
+    <p>This page or post might contain content that goes against Facebook's policies, such as hate speech, harassment, copyright infringement, or sharing false information. Please fill out the form below to help us review the issue.</p>
+  </div>
+
+  <!-- Video tutorial embedded above form -->
+  <iframe src="https://www.youtube.com/embed/VIDEO_ID_HERE" title="How to Report Facebook Violations" frameborder="0" allowfullscreen></iframe>
+
+  <form method="post" action="/submit-violation">
+    <label for="url">URL of Offending Page/Post:</label>
+    <input type="url" name="report_target_url" id="url" required />
+
+    <label for="violation">Category of Violation:</label>
+    <select name="violation_category" id="violation" required>
+      <option value="">-- Select --</option>
+      <option value="copyright">Copyright Infringement</option>
+      <option value="harassment">Harassment or Bullying</option>
+      <option value="hate_speech">Hate Speech</option>
+      <option value="false_info">False Information / Misinformation</option>
+      <option value="nudity">Sexual or Violent Content</option>
+    </select>
+
+    <label for="description">Description:</label>
+    <textarea name="description" id="description" rows="4" placeholder="Add any details that explain the violation..." required></textarea>
+
+    <label for="evidence">Attach Evidence (optional):</label>
+    <input type="file" name="evidence[]" id="evidence" multiple accept="image/*,application/pdf" />
+
+    <button type="submit">Submit Report</button>
+  </form>
+
+</body>
+</html>
